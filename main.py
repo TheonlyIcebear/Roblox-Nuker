@@ -136,7 +136,7 @@ class Nuke:
     global headers
     global userid
     global goOn
-    goOn = True
+    os.system("")
     check = Nuke.check()
     if check.status_code ==200:
       headers={'X-CSRF-TOKEN': getXsrf(cookie)}
