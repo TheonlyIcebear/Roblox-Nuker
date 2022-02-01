@@ -1,5 +1,28 @@
-import threading, requests, time, os
-from termcolor import cprint
+import threading, time, os
+try:
+  import requests
+  from termcolor import cprint
+except:
+  try:
+    import pip
+  except ImportError:
+      os.system("")
+      print("[", end="")
+      print('\033[31m'+" ERROR ", "red", end="")
+      print("] " , end="")
+      print('\033[31m'+"Pip not installed. Installing now...")
+      subprocess.call("curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py", shell=True)
+      time.sleep(5)
+      os.system("get-pip.py")
+  print("[", end="")
+  print('\033[31m'+" ERROR ", "red", end="")
+  print("] " , end="")
+  print('\033[31m'+"Packages not installed. Installing now...")
+  subprocess.call("pip install termcolor", shell=True)
+  subprocess.call("pip install requests", shell=True)
+finally:
+  import requests
+  from termcolor import cprint
 # Made by Ice Bear#0167
 def getXsrf(cookie):
       xsrfRequest = requests.post("https://auth.roblox.com/v2/logout", cookies={
