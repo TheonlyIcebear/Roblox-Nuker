@@ -1,7 +1,5 @@
 # Roblox-Nuker
 A nuker for Roblox accounts. Made by Ice Bear#0167
-<br>
-<img src="https://tr.rbxcdn.com/26990594c5e4f706afecded31c1e1655/420/420/Image/Png">
 # Usage
 I would recommend running in replit (https://replit.com)
 
