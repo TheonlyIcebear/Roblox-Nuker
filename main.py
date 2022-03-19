@@ -38,6 +38,7 @@ class Nuke:
   def __init__(self):
     self.headers = None
     self.cookie = None
+    self.start()
   def flash(self):
     print("[", end="")
     cprint(" NUKER ", "magenta", end="")
@@ -149,6 +150,5 @@ class Nuke:
       clear()
       self.check()
 if __name__ == '__main__':
-  Nuke = Nuke()
-  Nuke.start()
+  Nuke()
   # Coded by Ice Bear#0167
